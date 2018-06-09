@@ -35,7 +35,8 @@ typedef set<Student, rule> st;
 int main()
 {
 	freopen("score.csv", "r", stdin);
-	
+	int num = 0, mnum = 0, fnum = 0;
+	int sum = 0, msum = 0, fsum = 0;
 	st sst;
 	Student ad;
 	char cmd[100];
@@ -66,8 +67,23 @@ int main()
 		cin.getline(cmd,100);
 		ad.info.score = atoi(cmd);
 		
+		sum += ad.info.score;
+		num++;
+		if(ad.info.sex)
+		{
+			msum += ad.info.score;
+			mnum++;
+		}
+		else
+		{
+			fsum += ad.info.score;
+			fnum++;
+		}
+		
 		sst.insert(ad);
 	}
+	
+	cout << 1.0*sum/num << endl << 1.0*msum/mnum << endl << 1.0*fsum/fnum << endl;
 	
 	st::iterator i;
 	for(i = sst.begin(); i != sst.end(); ++i)
