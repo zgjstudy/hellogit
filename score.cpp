@@ -10,7 +10,7 @@ using namespace std;
 struct StudentInfo
 {
 	bool sex;
-	int score;
+	double score;
 };
 
 struct Student
@@ -36,16 +36,13 @@ int main()
 {
 	freopen("score.csv", "r", stdin);
 	int num = 0, mnum = 0, fnum = 0;
-	int sum = 0, msum = 0, fsum = 0;
+	double sum = 0, msum = 0, fsum = 0;
 	st sst;
 	Student ad;
 	char cmd[100];
 	cin.getline(cmd,100);
 	while(cin.peek() != EOF)
 	{
-//		if(cin.peek() == '/n')
-//			break;
-		
 		cin.getline(cmd, 20, ',');
 		cin.get();
 		ad.name = cmd;
@@ -65,7 +62,7 @@ int main()
 		}
 		
 		cin.getline(cmd,100);
-		ad.info.score = atoi(cmd);
+		ad.info.score = atof(cmd);
 		
 		sum += ad.info.score;
 		num++;
@@ -83,7 +80,7 @@ int main()
 		sst.insert(ad);
 	}
 	
-	cout << 1.0*sum/num << endl << 1.0*msum/mnum << endl << 1.0*fsum/fnum << endl;
+	cout << sum/num << endl << msum/mnum << endl << fsum/fnum << endl;
 	
 	st::iterator i;
 	for(i = sst.begin(); i != sst.end(); ++i)
